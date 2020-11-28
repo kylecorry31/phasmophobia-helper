@@ -97,6 +97,16 @@ export class AppComponent {
     this.identifyGhost();
   }
 
+  showSpeechPrompt(){
+    const text = prompt("Enter text to speak");
+    if (text == null){
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    const synth = window.speechSynthesis;
+    synth.speak(utterance);
+  }
+
   identifyGhost(){
     const currentEvidence = [this.evidence1, this.evidence2, this.evidence3].filter(it => it != null);
 
