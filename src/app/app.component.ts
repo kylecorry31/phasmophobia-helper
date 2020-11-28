@@ -27,6 +27,10 @@ export class AppComponent {
       evidence: ["EMF Level 5", "Fingerprints", "Freezing Temperatures"]
     },
     {
+      name: "Spirit",
+      evidence: ["Ghost Writing", "Fingerprints", "Spirit Box"]
+    },
+    {
       name: "Demon",
       evidence: ["Ghost Writing", "Spirit Box", "Freezing Temperatures"]
     },
