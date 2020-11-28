@@ -40,7 +40,7 @@ export class AppComponent {
     },
     {
       name: "Oni",
-      evidence: ["EMF Level 5", "Ghost Writing", "Sprit Box"]
+      evidence: ["EMF Level 5", "Ghost Writing", "Spirit Box"]
     },
     {
       name: "Phantom",
