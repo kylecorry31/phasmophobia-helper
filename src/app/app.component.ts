@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 interface Ghost {
   name: string;
-  evidence: string[]
+  evidence: Evidence[]
 }
+
+type Evidence = 'Freezing Temperatures' | 'Fingerprints' | 'Spirit Box' | 'EMF Level 5' | 'Ghost Writing' | 'Ghost Orb'
 
 @Component({
   selector: 'app-root',
@@ -12,13 +14,13 @@ interface Ghost {
 })
 export class AppComponent {
   
-  evidence = [
-    'Freezing Temperatures',
-    'Fingerprints',
-    'Spirit Box',
+  evidence: Evidence[] = [
     'EMF Level 5',
+    'Fingerprints',
+    'Ghost Orb',
     'Ghost Writing',
-    'Ghost Orb'
+    'Freezing Temperatures',
+    'Spirit Box'
   ]
 
   ghosts: Ghost[] = [
@@ -70,7 +72,7 @@ export class AppComponent {
       name: "Yurei",
       evidence: ["Ghost Writing", "Freezing Temperatures", "Ghost Orb"]
     }
-  ]
+  ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[]
 
   possibleGhosts: Ghost[] = this.ghosts;
   remainingEvidence: string[] = this.evidence;
@@ -101,16 +103,6 @@ export class AppComponent {
     this.identifyGhost();
   }
 
-  showSpeechPrompt(){
-    const text = prompt("Enter text to speak");
-    if (text == null){
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(text);
-    const synth = window.speechSynthesis;
-    synth.speak(utterance);
-  }
-
   identifyGhost(){
     const currentEvidence = [this.evidence1, this.evidence2, this.evidence3].filter(it => it != null);
 
@@ -133,7 +125,7 @@ export class AppComponent {
       obj[item] = true;
     }
 
-    return Object.keys(obj);
+    return Object.keys(obj).sort((a, b) => a.localeCompare(b));
   }
 
   removeAll(main: string[], items: string[]): string[] {

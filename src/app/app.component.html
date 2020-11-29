@@ -1,4 +1,4 @@
-<h1 (click)="showSpeechPrompt()">Phasmophobia Helper</h1>
+<h1>Phasmophobia Helper</h1>
 
 <div id="entry">
   <mat-form-field>
@@ -37,21 +37,31 @@
   <button mat-button (click)="reset()">Clear</button>
 </div>
 
-<h2>Evidence Left</h2>
-<ul>
-  <li *ngFor="let evidence of remainingEvidence">{{ evidence }}</li>
-</ul>
+<ng-container *ngIf="possibleGhosts && possibleGhosts.length > 1">
+  <h2>Evidence Left</h2>
+  <ul>
+    <li *ngFor="let evidence of remainingEvidence">{{ evidence }}</li>
+  </ul>
 
-<h2>Ghost</h2>
-<ul>
-  <li *ngFor="let ghost of possibleGhosts">
-    <strong>{{ ghost.name }}</strong>
-    &nbsp;
-    <small
-      >({{
-        removeAll(ghost.evidence, [evidence1, evidence2, evidence3])
-          | arrayFormat
-      }})</small
-    >
-  </li>
-</ul>
+  <h2>Ghost</h2>
+  <ul>
+    <li *ngFor="let ghost of possibleGhosts">
+      <strong>{{ ghost.name }}</strong>
+      &nbsp;
+      <small
+        >({{
+          removeAll(ghost.evidence, [evidence1, evidence2, evidence3])
+            | arrayFormat
+        }})</small
+      >
+    </li>
+  </ul>
+</ng-container>
+
+<div *ngIf="possibleGhosts?.length === 1">
+  <h1>{{ possibleGhosts[0].name }}</h1>
+</div>
+
+<div *ngIf="possibleGhosts?.length === 0">
+  <h1>Nothing</h1>
+</div>
