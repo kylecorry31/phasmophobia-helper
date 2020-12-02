@@ -62,3 +62,10 @@ mat-form-field {
 .mobile-btn-selected {
   opacity: 1;
 }
+
+.ghost-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

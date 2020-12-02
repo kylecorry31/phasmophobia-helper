@@ -3,10 +3,10 @@
 <button
   mat-icon-button
   (click)="toggleMobile()"
-  [class.mobile-btn-selected]="!isMobile"
+  [class.mobile-btn-selected]="isMobile"
   class="mobile-btn"
 >
-  <mat-icon>computer</mat-icon>
+  <mat-icon>smartphone</mat-icon>
 </button>
 
 <div id="entry">
@@ -32,9 +32,11 @@
   </button>
 </div>
 
-<app-ghost
-  *ngFor="let ghost of isMobile ? possibleGhosts : ghosts"
-  [ghost]="ghost"
-  [class.unavailable]="!possibleGhosts.includes(ghost)"
-  [currentEvidence]="currentEvidence"
-></app-ghost>
+<div class="ghost-section">
+  <app-ghost
+    *ngFor="let ghost of isMobile ? possibleGhosts : ghosts"
+    [ghost]="ghost"
+    [class.unavailable]="!possibleGhosts.includes(ghost)"
+    [currentEvidence]="currentEvidence"
+  ></app-ghost>
+</div>
