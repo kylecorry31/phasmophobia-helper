@@ -23,11 +23,42 @@ mat-form-field {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-@media only screen and (max-width: 768px) {
-  #entry {
-    flex-direction: column;
-  }
+.evidence-btn {
+  margin: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evidence-btn .ghost-evidence {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.evidence-btn:disabled {
+  opacity: 0.5;
+}
+
+.selected {
+  background-color: black;
+  color: white;
+}
+
+.unavailable {
+  opacity: 0.1;
+}
+
+.mobile-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0.3;
+}
+
+.mobile-btn-selected {
+  opacity: 1;
 }

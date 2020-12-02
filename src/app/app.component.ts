@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
-interface Ghost {
+export interface Ghost {
   name: string;
   evidence: Evidence[]
 }
 
-type Evidence = 'Freezing Temperatures' | 'Fingerprints' | 'Spirit Box' | 'EMF Level 5' | 'Ghost Writing' | 'Ghost Orb'
+export type Evidence = 'Freezing Temperatures' | 'Fingerprints' | 'Spirit Box' | 'EMF Level 5' | 'Ghost Writing' | 'Ghost Orb'
 
 @Component({
   selector: 'app-root',
@@ -74,40 +74,44 @@ export class AppComponent {
     }
   ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[]
 
+  isMobile: boolean = localStorage.getItem('phasmophobia:isMobile') === "true";
+
+  evidenceIconMap: { [evidence: string]: string } = {
+    "EMF Level 5": "settings_remote",
+    "Spirit Box": "radio",
+    "Ghost Writing": "menu_book",
+    "Freezing Temperatures": "ac_unit",
+    "Ghost Orb": "videocam",
+    "Fingerprints": "fingerprint"
+  }
+
+  currentEvidence: Evidence[] = [];
+
   possibleGhosts: Ghost[] = this.ghosts;
   remainingEvidence: string[] = this.evidence;
 
-  evidence1: string;
-  evidence2: string;
-  evidence3: string;
-
-  evidence1Changed(value: string){
-    this.evidence1 = value;
-    this.identifyGhost();
+  toggleMobile(){
+    this.isMobile = !this.isMobile;
+    localStorage.setItem("phasmophobia:isMobile", "" + this.isMobile);
   }
 
-  evidence2Changed(value: string){
-    this.evidence2 = value;
-    this.identifyGhost();
-  }
-
-  evidence3Changed(value: string){
-    this.evidence3 = value;
+  toggleEvidence(value: Evidence){
+    if (this.currentEvidence.includes(value)){
+      this.currentEvidence.splice(this.currentEvidence.indexOf(value), 1);
+    } else if (this.currentEvidence.length < 3) {
+      this.currentEvidence.push(value);
+    }
     this.identifyGhost();
   }
 
   reset(){
-    this.evidence1 = null;
-    this.evidence2 = null;
-    this.evidence3 = null;
+    this.currentEvidence = [];
     this.identifyGhost();
   }
 
   identifyGhost(){
-    const currentEvidence = [this.evidence1, this.evidence2, this.evidence3].filter(it => it != null);
-
-    this.possibleGhosts = this.ghosts.filter(it => this.containsAll(it.evidence, currentEvidence));
-    this.remainingEvidence = this.removeAll(this.distinct(this.possibleGhosts.flatMap(it => it.evidence)), currentEvidence);
+    this.possibleGhosts = this.ghosts.filter(it => this.containsAll(it.evidence, this.currentEvidence));
+    this.remainingEvidence = this.removeAll(this.distinct(this.possibleGhosts.flatMap(it => it.evidence)), this.currentEvidence);
   }
 
   private containsAll(main: string[], values: string[]): boolean {

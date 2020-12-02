@@ -1,67 +1,40 @@
 <h1>Phasmophobia Helper</h1>
 
+<button
+  mat-icon-button
+  (click)="toggleMobile()"
+  [class.mobile-btn-selected]="!isMobile"
+  class="mobile-btn"
+>
+  <mat-icon>computer</mat-icon>
+</button>
+
 <div id="entry">
-  <mat-form-field>
-    <mat-label>Evidence 1</mat-label>
-    <mat-select
-      [value]="evidence1"
-      (selectionChange)="evidence1Changed($event.value)"
+  <div *ngFor="let e of evidence">
+    <button
+      mat-stroked-button
+      class="evidence-btn"
+      (click)="toggleEvidence(e)"
+      [class.selected]="currentEvidence.includes(e)"
+      [disabled]="
+        remainingEvidence.includes(e) || currentEvidence.includes(e)
+          ? null
+          : true
+      "
     >
-      <mat-option [value]="null">None</mat-option>
-      <mat-option *ngFor="let e of evidence" [value]="e">{{ e }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-icon class="ghost-evidence">{{ evidenceIconMap[e] }}</mat-icon>
+      {{ e }}
+    </button>
+  </div>
 
-  <mat-form-field>
-    <mat-label>Evidence 2</mat-label>
-    <mat-select
-      [value]="evidence2"
-      (selectionChange)="evidence2Changed($event.value)"
-    >
-      <mat-option [value]="null">None</mat-option>
-      <mat-option *ngFor="let e of evidence" [value]="e">{{ e }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Evidence 3</mat-label>
-    <mat-select
-      [value]="evidence3"
-      (selectionChange)="evidence3Changed($event.value)"
-    >
-      <mat-option [value]="null">None</mat-option>
-      <mat-option *ngFor="let e of evidence" [value]="e">{{ e }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button mat-button (click)="reset()">Clear</button>
+  <button mat-icon-button color="warn" (click)="reset()">
+    <mat-icon>clear</mat-icon>
+  </button>
 </div>
 
-<ng-container *ngIf="possibleGhosts && possibleGhosts.length > 1">
-  <h2>Evidence Left</h2>
-  <ul>
-    <li *ngFor="let evidence of remainingEvidence">{{ evidence }}</li>
-  </ul>
-
-  <h2>Ghost</h2>
-  <ul>
-    <li *ngFor="let ghost of possibleGhosts">
-      <strong>{{ ghost.name }}</strong>
-      &nbsp;
-      <small
-        >({{
-          removeAll(ghost.evidence, [evidence1, evidence2, evidence3])
-            | arrayFormat
-        }})</small
-      >
-    </li>
-  </ul>
-</ng-container>
-
-<div *ngIf="possibleGhosts?.length === 1">
-  <h1>{{ possibleGhosts[0].name }}</h1>
-</div>
-
-<div *ngIf="possibleGhosts?.length === 0">
-  <h1>Nothing</h1>
-</div>
+<app-ghost
+  *ngFor="let ghost of isMobile ? possibleGhosts : ghosts"
+  [ghost]="ghost"
+  [class.unavailable]="!possibleGhosts.includes(ghost)"
+  [currentEvidence]="currentEvidence"
+></app-ghost>

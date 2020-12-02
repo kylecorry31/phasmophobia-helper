@@ -1,0 +1,12 @@
+<h4>{{ ghost.name }}</h4>
+<div>
+  <small>
+    <mat-icon
+      *ngFor="let e of ghost.evidence"
+      class="ghost-evidence"
+      [matTooltip]="e"
+      [class.found]="currentEvidence.includes(e)"
+      >{{ evidenceIconMap[e] }}</mat-icon
+    >
+  </small>
+</div>
