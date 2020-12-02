@@ -18,7 +18,7 @@ export class GhostComponent implements OnInit {
   }
 
   @Input() ghost: Ghost;
-  @Input() currentEvidence: Evidence;
+  @Input() currentEvidence: Evidence[];
 
   constructor() { }
 
