@@ -22,7 +22,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
   bootstrap: [AppComponent]
