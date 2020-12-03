@@ -6,23 +6,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ArrayFormatPipe } from './array-format.pipe';
 import { GhostComponent } from './ghost/ghost.component';
-import { RouterModule } from '@angular/router';
+import { EvidenceIconPipe } from './evidence-icon.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArrayFormatPipe,
-    GhostComponent
+    GhostComponent,
+    EvidenceIconPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule,
-    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' })
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

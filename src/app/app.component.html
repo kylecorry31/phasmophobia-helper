@@ -1,13 +1,4 @@
-<h1>Phasmophobia Helper</h1>
-
-<button
-  mat-icon-button
-  (click)="toggleMobile()"
-  [class.mobile-btn-selected]="isMobile"
-  class="mobile-btn"
->
-  <mat-icon>smartphone</mat-icon>
-</button>
+<h1>Phasmofinder</h1>
 
 <div id="entry">
   <div *ngFor="let e of evidence">
@@ -22,7 +13,7 @@
           : true
       "
     >
-      <mat-icon class="ghost-evidence">{{ evidenceIconMap[e] }}</mat-icon>
+      <mat-icon class="ghost-evidence">{{ e | evidenceIcon }}</mat-icon>
       {{ e }}
     </button>
   </div>
@@ -34,9 +25,8 @@
 
 <div class="ghost-section">
   <app-ghost
-    *ngFor="let ghost of isMobile ? possibleGhosts : ghosts"
+    *ngFor="let ghost of possibleGhosts"
     [ghost]="ghost"
-    [class.unavailable]="!possibleGhosts.includes(ghost)"
     [currentEvidence]="currentEvidence"
   ></app-ghost>
 </div>

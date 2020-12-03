@@ -8,15 +8,6 @@ import { Ghost, Evidence } from '../app.component'
 })
 export class GhostComponent implements OnInit {
 
-  evidenceIconMap: { [evidence: string]: string } = {
-    "EMF Level 5": "settings_remote",
-    "Spirit Box": "radio",
-    "Ghost Writing": "menu_book",
-    "Freezing Temperatures": "ac_unit",
-    "Ghost Orb": "videocam",
-    "Fingerprints": "fingerprint"
-  }
-
   @Input() ghost: Ghost;
   @Input() currentEvidence: Evidence[];
 

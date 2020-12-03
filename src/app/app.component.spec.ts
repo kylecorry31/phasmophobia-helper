@@ -78,17 +78,6 @@ describe('AppComponent', () => {
     
   })
 
-  it('can toggle mobile', () => {
-    component.isMobile = true;
-    component.toggleMobile();
-    expect(component.isMobile).toBeFalse();
-    expect(localStorage.getItem('phasmophobia:isMobile')).toEqual("false");
-
-    component.toggleMobile();
-    expect(component.isMobile).toBeTrue();
-    expect(localStorage.getItem('phasmophobia:isMobile')).toEqual("true");
-  })
-
   it('can reset evidence', () => {
     component.toggleEvidence('Ghost Writing');
     component.reset();

@@ -17,9 +17,9 @@ export class AppComponent {
   evidence: Evidence[] = [
     'EMF Level 5',
     'Fingerprints',
+    'Freezing Temperatures',
     'Ghost Orb',
     'Ghost Writing',
-    'Freezing Temperatures',
     'Spirit Box'
   ]
 
@@ -30,19 +30,19 @@ export class AppComponent {
     },
     {
       name: "Spirit",
-      evidence: ["Ghost Writing", "Fingerprints", "Spirit Box"]
+      evidence: ["Fingerprints", "Ghost Writing", "Spirit Box"]
     },
     {
       name: "Demon",
-      evidence: ["Ghost Writing", "Spirit Box", "Freezing Temperatures"]
+      evidence: ["Freezing Temperatures", "Ghost Writing", "Spirit Box"]
     },
     {
       name: "Jinn",
-      evidence: ["EMF Level 5", "Spirit Box", "Ghost Orb"]
+      evidence: ["EMF Level 5", "Ghost Orb", "Spirit Box"]
     },
     {
       name: "Mare",
-      evidence: ["Freezing Temperatures", "Spirit Box", "Ghost Orb"]
+      evidence: ["Freezing Temperatures", "Ghost Orb", "Spirit Box"]
     },
     {
       name: "Oni",
@@ -54,46 +54,30 @@ export class AppComponent {
     },
     {
       name: "Poltergeist",
-      evidence: ["Fingerprints", "Spirit Box", "Ghost Orb"]
+      evidence: ["Fingerprints", "Ghost Orb", "Spirit Box"]
     },
     {
       name: "Revenant",
-      evidence: ["EMF Level 5", "Ghost Writing", "Fingerprints"]
+      evidence: ["EMF Level 5", "Fingerprints", "Ghost Writing"]
     },
     {
       name: "Shade",
-      evidence: ["EMF Level 5", "Ghost Writing", "Ghost Orb"]
+      evidence: ["EMF Level 5", "Ghost Orb", "Ghost Writing"]
     },
     {
       name: "Wraith",
-      evidence: ["Fingerprints", "Spirit Box", "Freezing Temperatures"]
+      evidence: ["Fingerprints", "Freezing Temperatures", "Spirit Box"]
     },
     {
       name: "Yurei",
-      evidence: ["Ghost Writing", "Freezing Temperatures", "Ghost Orb"]
+      evidence: ["Freezing Temperatures", "Ghost Orb", "Ghost Writing"]
     }
   ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[]
-
-  isMobile: boolean = localStorage.getItem('phasmophobia:isMobile') === "true";
-
-  evidenceIconMap: { [evidence: string]: string } = {
-    "EMF Level 5": "settings_remote",
-    "Spirit Box": "radio",
-    "Ghost Writing": "menu_book",
-    "Freezing Temperatures": "ac_unit",
-    "Ghost Orb": "videocam",
-    "Fingerprints": "fingerprint"
-  }
 
   currentEvidence: Evidence[] = [];
 
   possibleGhosts: Ghost[] = this.ghosts;
   remainingEvidence: string[] = this.evidence;
-
-  toggleMobile(){
-    this.isMobile = !this.isMobile;
-    localStorage.setItem("phasmophobia:isMobile", "" + this.isMobile);
-  }
 
   toggleEvidence(value: Evidence){
     if (this.currentEvidence.includes(value)){

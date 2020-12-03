@@ -48,14 +48,14 @@ describe('GhostComponent', () => {
     expect(evidence[0].nativeElement.textContent).toEqual('settings_remote');
   })
 
-  it("should have a valid evidence icon map", () => {
-    expect(component.evidenceIconMap).toEqual({
-      "EMF Level 5": "settings_remote",
-      "Spirit Box": "radio",
-      "Ghost Writing": "menu_book",
-      "Freezing Temperatures": "ac_unit",
-      "Ghost Orb": "videocam",
-      "Fingerprints": "fingerprint"
-    });
-  })
+  // it("should have a valid evidence icon map", () => {
+  //   expect(component.evidenceIconMap).toEqual({
+  //     "EMF Level 5": "settings_remote",
+  //     "Spirit Box": "radio",
+  //     "Ghost Writing": "menu_book",
+  //     "Freezing Temperatures": "ac_unit",
+  //     "Ghost Orb": "videocam",
+  //     "Fingerprints": "fingerprint"
+  //   });
+  // })
 });

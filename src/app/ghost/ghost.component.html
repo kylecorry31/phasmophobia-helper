@@ -6,7 +6,7 @@
       class="ghost-evidence"
       [matTooltip]="e"
       [class.found]="currentEvidence.includes(e)"
-      >{{ evidenceIconMap[e] }}</mat-icon
+      >{{ e | evidenceIcon }}</mat-icon
     >
   </small>
 </div>
