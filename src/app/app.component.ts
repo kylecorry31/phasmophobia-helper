@@ -37,6 +37,10 @@ export class AppComponent {
       evidence: ["Freezing Temperatures", "Ghost Writing", "Spirit Box"]
     },
     {
+      name: "Hantu",
+      evidence: ["Fingerprints", "Ghost Orb", "Ghost Writing"]
+    },
+    {
       name: "Jinn",
       evidence: ["EMF Level 5", "Ghost Orb", "Spirit Box"]
     },
@@ -67,6 +71,10 @@ export class AppComponent {
     {
       name: "Wraith",
       evidence: ["Fingerprints", "Freezing Temperatures", "Spirit Box"]
+    },
+    {
+      name: "Yokai",
+      evidence: ["Spirit Box", "Ghost Orb", "Ghost Writing"]
     },
     {
       name: "Yurei",
