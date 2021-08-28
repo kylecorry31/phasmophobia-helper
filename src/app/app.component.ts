@@ -1,94 +1,109 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 export interface Ghost {
   name: string;
-  evidence: Evidence[]
+  evidence: Evidence[];
 }
 
-export type Evidence = 'Freezing Temperatures' | 'Fingerprints' | 'Spirit Box' | 'EMF Level 5' | 'Ghost Writing' | 'Ghost Orb'
+export type Evidence =
+  | "Freezing Temperatures"
+  | "Fingerprints"
+  | "Spirit Box"
+  | "EMF Level 5"
+  | "Ghost Writing"
+  | "Ghost Orb"
+  | "D.O.T.S Projector";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  
   evidence: Evidence[] = [
-    'EMF Level 5',
-    'Fingerprints',
-    'Freezing Temperatures',
-    'Ghost Orb',
-    'Ghost Writing',
-    'Spirit Box'
-  ]
+    "EMF Level 5",
+    "Fingerprints",
+    "Freezing Temperatures",
+    "Ghost Orb",
+    "Ghost Writing",
+    "Spirit Box",
+    "D.O.T.S Projector",
+  ];
 
   ghosts: Ghost[] = [
     {
-      name: "Banshee",
-      evidence: ["EMF Level 5", "Fingerprints", "Freezing Temperatures"]
-    },
-    {
       name: "Spirit",
-      evidence: ["Fingerprints", "Ghost Writing", "Spirit Box"]
-    },
-    {
-      name: "Demon",
-      evidence: ["Freezing Temperatures", "Ghost Writing", "Spirit Box"]
-    },
-    {
-      name: "Hantu",
-      evidence: ["Fingerprints", "Ghost Orb", "Ghost Writing"]
-    },
-    {
-      name: "Jinn",
-      evidence: ["EMF Level 5", "Ghost Orb", "Spirit Box"]
-    },
-    {
-      name: "Mare",
-      evidence: ["Freezing Temperatures", "Ghost Orb", "Spirit Box"]
-    },
-    {
-      name: "Oni",
-      evidence: ["EMF Level 5", "Ghost Writing", "Spirit Box"]
-    },
-    {
-      name: "Phantom",
-      evidence: ["EMF Level 5", "Freezing Temperatures", "Ghost Orb"]
-    },
-    {
-      name: "Poltergeist",
-      evidence: ["Fingerprints", "Ghost Orb", "Spirit Box"]
-    },
-    {
-      name: "Revenant",
-      evidence: ["EMF Level 5", "Fingerprints", "Ghost Writing"]
-    },
-    {
-      name: "Shade",
-      evidence: ["EMF Level 5", "Ghost Orb", "Ghost Writing"]
+      evidence: ["EMF Level 5", "Spirit Box", "Ghost Writing"],
     },
     {
       name: "Wraith",
-      evidence: ["Fingerprints", "Freezing Temperatures", "Spirit Box"]
+      evidence: ["EMF Level 5", "Spirit Box", "D.O.T.S Projector"],
     },
     {
-      name: "Yokai",
-      evidence: ["Spirit Box", "Ghost Orb", "Ghost Writing"]
+      name: "Phantom",
+      evidence: ["Spirit Box", "Fingerprints", "D.O.T.S Projector"],
+    },
+    {
+      name: "Poltergeist",
+      evidence: ["Spirit Box", "Fingerprints", "Ghost Writing"],
+    },
+    {
+      name: "Banshee",
+      evidence: ["Fingerprints", "Ghost Orb", "D.O.T.S Projector"],
+    },
+    {
+      name: "Jinn",
+      evidence: ["EMF Level 5", "Fingerprints", "Freezing Temperatures"],
+    },
+    {
+      name: "Mare",
+      evidence: ["Spirit Box", "Ghost Orb", "Ghost Writing"],
+    },
+    {
+      name: "Revenant",
+      evidence: ["Ghost Orb", "Ghost Writing", "Freezing Temperatures"],
+    },
+    {
+      name: "Shade",
+      evidence: ["EMF Level 5", "Ghost Writing", "Freezing Temperatures"],
+    },
+    {
+      name: "Demon",
+      evidence: ["Fingerprints", "Ghost Writing", "Freezing Temperatures"],
     },
     {
       name: "Yurei",
-      evidence: ["Freezing Temperatures", "Ghost Orb", "Ghost Writing"]
-    }
-  ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[]
+      evidence: ["Ghost Orb", "Freezing Temperatures", "D.O.T.S Projector"],
+    },
+    {
+      name: "Oni",
+      evidence: ["EMF Level 5", "Freezing Temperatures", "D.O.T.S Projector"],
+    },
+    {
+      name: "Hantu",
+      evidence: ["Fingerprints", "Ghost Orb", "Freezing Temperatures"],
+    },
+    {
+      name: "Yokai",
+      evidence: ["Spirit Box", "Ghost Orb", "D.O.T.S Projector"],
+    },
+    {
+      name: "Goryo",
+      evidence: ["EMF Level 5", "Fingerprints", "D.O.T.S Projector"],
+    },
+    {
+      name: "Myling",
+      evidence: ["EMF Level 5", "Fingerprints", "Ghost Writing"],
+    },
+  ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[];
 
   currentEvidence: Evidence[] = [];
 
   possibleGhosts: Ghost[] = this.ghosts;
   remainingEvidence: string[] = this.evidence;
 
-  toggleEvidence(value: Evidence){
-    if (this.currentEvidence.includes(value)){
+  toggleEvidence(value: Evidence) {
+    if (this.currentEvidence.includes(value)) {
       this.currentEvidence.splice(this.currentEvidence.indexOf(value), 1);
     } else if (this.currentEvidence.length < 3) {
       this.currentEvidence.push(value);
@@ -96,19 +111,24 @@ export class AppComponent {
     this.identifyGhost();
   }
 
-  reset(){
+  reset() {
     this.currentEvidence = [];
     this.identifyGhost();
   }
 
-  identifyGhost(){
-    this.possibleGhosts = this.ghosts.filter(it => this.containsAll(it.evidence, this.currentEvidence));
-    this.remainingEvidence = this.removeAll(this.distinct(this.possibleGhosts.flatMap(it => it.evidence)), this.currentEvidence);
+  identifyGhost() {
+    this.possibleGhosts = this.ghosts.filter((it) =>
+      this.containsAll(it.evidence, this.currentEvidence)
+    );
+    this.remainingEvidence = this.removeAll(
+      this.distinct(this.possibleGhosts.flatMap((it) => it.evidence)),
+      this.currentEvidence
+    );
   }
 
   private containsAll(main: string[], values: string[]): boolean {
-    for (const value of values){
-      if (!main.includes(value)){
+    for (const value of values) {
+      if (!main.includes(value)) {
         return false;
       }
     }
@@ -117,7 +137,7 @@ export class AppComponent {
 
   private distinct(items: string[]): string[] {
     const obj = {};
-    for (const item of items){
+    for (const item of items) {
       obj[item] = true;
     }
 
@@ -125,7 +145,6 @@ export class AppComponent {
   }
 
   removeAll(main: string[], items: string[]): string[] {
-    return main.filter(it => !items.includes(it));
+    return main.filter((it) => !items.includes(it));
   }
-
 }

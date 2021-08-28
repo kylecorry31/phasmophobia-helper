@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1624484983806,
+  "timestamp": 1630188722591,
   "index": "/phasmophobia-helper/index.html",
   "assetGroups": [
     {
@@ -13,8 +13,8 @@
       "urls": [
         "/phasmophobia-helper/favicon.ico",
         "/phasmophobia-helper/index.html",
-        "/phasmophobia-helper/main-es2020.6bfac3abef542ef623c0.js",
-        "/phasmophobia-helper/main-es5.6bfac3abef542ef623c0.js",
+        "/phasmophobia-helper/main-es2020.c426dd2efff4012a0ca2.js",
+        "/phasmophobia-helper/main-es5.c426dd2efff4012a0ca2.js",
         "/phasmophobia-helper/manifest.webmanifest",
         "/phasmophobia-helper/polyfills-es2020.ba78947c8b103ff9cbd4.js",
         "/phasmophobia-helper/polyfills-es5.b516c02b9f8eaec4ec49.js",
@@ -47,9 +47,9 @@
     "/phasmophobia-helper/assets/icons/icon-72x72.png": "ecb524a2541ff06cb3d0692824b64f248bf7c831",
     "/phasmophobia-helper/assets/icons/icon-96x96.png": "24f56ce3c78b92ecaa641524133452507724efb6",
     "/phasmophobia-helper/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/phasmophobia-helper/index.html": "da39a4ee595938a1bdcb8e3ec2ac3650ef79c772",
-    "/phasmophobia-helper/main-es2020.6bfac3abef542ef623c0.js": "a71db556d66797bd542af511929e1f66ffd2def8",
-    "/phasmophobia-helper/main-es5.6bfac3abef542ef623c0.js": "3ed2eea04b8b2d163ae18ac8f614f282b91a0536",
+    "/phasmophobia-helper/index.html": "f95bca4e3b5dea610d999b730d6d53973effd01c",
+    "/phasmophobia-helper/main-es2020.c426dd2efff4012a0ca2.js": "9bdd8f18f9d9fb420496d05263fc1952f7979380",
+    "/phasmophobia-helper/main-es5.c426dd2efff4012a0ca2.js": "449d06b363312052ab9e39d9278863d734f1bab6",
     "/phasmophobia-helper/manifest.webmanifest": "31af3dd46bd7bb795636776eeae0e57cc24760f8",
     "/phasmophobia-helper/polyfills-es2020.ba78947c8b103ff9cbd4.js": "65c537467564ee0ba776b629f71ed3413413a7cb",
     "/phasmophobia-helper/polyfills-es5.b516c02b9f8eaec4ec49.js": "214f4b46e6da9fadd1fae2439f1791ee1ad0f563",
