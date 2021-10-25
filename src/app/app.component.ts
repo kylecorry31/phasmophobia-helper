@@ -95,6 +95,22 @@ export class AppComponent {
       name: "Myling",
       evidence: ["EMF Level 5", "Fingerprints", "Ghost Writing"],
     },
+    {
+      name: "Onryo",
+      evidence: ["Spirit Box", "Ghost Orb", "Freezing Temperatures"]
+    },
+    {
+      name: "The Twins",
+      evidence: ["EMF Level 5", "Spirit Box", "Freezing Temperatures"]
+    },
+    {
+      name: "Raiju",
+      evidence: ["EMF Level 5", "Ghost Orb", "D.O.T.S Projector"]
+    },
+    {
+      name: "Obake",
+      evidence: ["EMF Level 5", "Fingerprints", "Ghost Orb"]
+    }
   ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[];
 
   currentEvidence: Evidence[] = [];
