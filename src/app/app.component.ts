@@ -114,6 +114,7 @@ export class AppComponent {
   ].sort((a, b) => a.name.localeCompare(b.name)) as Ghost[];
 
   currentEvidence: Evidence[] = [];
+  ruledOutEvidence: Evidence[] = [];
 
   possibleGhosts: Ghost[] = this.ghosts;
   remainingEvidence: string[] = this.evidence;
@@ -121,30 +122,49 @@ export class AppComponent {
   toggleEvidence(value: Evidence) {
     if (this.currentEvidence.includes(value)) {
       this.currentEvidence.splice(this.currentEvidence.indexOf(value), 1);
-    } else if (this.currentEvidence.length < 3) {
+      this.ruledOutEvidence.push(value);
+    } else if (this.ruledOutEvidence.includes(value)){
+      this.ruledOutEvidence.splice(this.ruledOutEvidence.indexOf(value), 1);
+    } else {
       this.currentEvidence.push(value);
     }
+    
+    
+    // else if (this.currentEvidence.length < 3) {
+    //   this.currentEvidence.push(value);
+    // }
     this.identifyGhost();
   }
 
   reset() {
     this.currentEvidence = [];
+    this.ruledOutEvidence = [];
     this.identifyGhost();
   }
 
   identifyGhost() {
     this.possibleGhosts = this.ghosts.filter((it) =>
-      this.containsAll(it.evidence, this.currentEvidence)
+      this.containsAll(it.evidence, this.currentEvidence) && 
+      this.containsNone(it.evidence, this.ruledOutEvidence)
     );
     this.remainingEvidence = this.removeAll(
       this.distinct(this.possibleGhosts.flatMap((it) => it.evidence)),
-      this.currentEvidence
+      [...this.currentEvidence, ...this.ruledOutEvidence]
     );
   }
 
   private containsAll(main: string[], values: string[]): boolean {
     for (const value of values) {
       if (!main.includes(value)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private containsNone(main: string[], values: string[]): boolean {
+    for (const value of values) {
+      if (main.includes(value)) {
         return false;
       }
     }

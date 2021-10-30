@@ -7,8 +7,9 @@
       class="evidence-btn"
       (click)="toggleEvidence(e)"
       [class.selected]="currentEvidence.includes(e)"
+      [class.ruled-out]="ruledOutEvidence.includes(e)"
       [disabled]="
-        remainingEvidence.includes(e) || currentEvidence.includes(e)
+        remainingEvidence.includes(e) || currentEvidence.includes(e) || ruledOutEvidence.includes(e)
           ? null
           : true
       "
