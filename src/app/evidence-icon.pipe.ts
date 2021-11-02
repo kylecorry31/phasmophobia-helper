@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Evidence } from './app.component';
 import { EvidenceIconService } from './evidence-icon.service';
+import { Evidence } from './models/evidence';
 
 @Pipe({
   name: 'evidenceIcon',

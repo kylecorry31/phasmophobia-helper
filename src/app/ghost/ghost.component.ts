@@ -1,5 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { Ghost, Evidence } from '../app.component'
+import { Evidence } from '../models/evidence';
+import { Ghost } from '../models/ghost';
 
 @Component({
   selector: 'app-ghost',

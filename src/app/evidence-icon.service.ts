@@ -1,21 +1,27 @@
 import { Injectable } from "@angular/core";
-import { Evidence } from "./app.component";
+import { Evidence } from "./models/evidence";
 
 @Injectable({
   providedIn: "root",
 })
 export class EvidenceIconService {
-  private evidenceIconMap: { [evidence: string]: string } = {
-    "EMF Level 5": "settings_remote",
-    "Spirit Box": "radio",
-    "Ghost Writing": "menu_book",
-    "Freezing Temperatures": "ac_unit",
-    "Ghost Orb": "videocam",
-    "Fingerprints": "fingerprint",
-    "D.O.T.S Projector": "blur_on",
-  };
 
   getIcon(evidence: Evidence): string {
-    return this.evidenceIconMap[evidence];
+    switch(evidence){
+      case Evidence.EMFLevel5:
+        return "settings_remote";
+      case Evidence.SpiritBox:
+        return "radio";
+      case Evidence.GhostWriting:
+        return "menu_book";
+      case Evidence.FreezingTemperatures:
+        return "ac_unit";
+      case Evidence.GhostOrb:
+        return "videocam";
+      case Evidence.Fingerprints:
+        return "fingerprint";
+      case Evidence.DOTSProjector:
+        return "blur_on";
+    }
   }
 }
