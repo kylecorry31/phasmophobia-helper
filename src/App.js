@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import Evidence from "./components/Evidence";
-import { IconButton } from '@material-ui/core';
+import EvidenceButton from "./components/EvidenceButton";
+import { IconButton } from "@material-ui/core";
 import Ghost from "./components/Ghost";
 import { containsAll, containsNone, removeAll, distinct } from "./utils";
 import { Clear } from "@material-ui/icons";
-import {FreezingTemperatures, Fingerprints, SpiritBox, EMFLevel5, GhostWriting, GhostOrb, DOTSProjector} from './evidence'
+import {
+  FreezingTemperatures,
+  Fingerprints,
+  SpiritBox,
+  EMFLevel5,
+  GhostWriting,
+  GhostOrb,
+  DOTSProjector,
+} from "./evidence";
 
 function App() {
   const evidence = [
@@ -23,12 +31,10 @@ function App() {
   const [ruledOutEvidence, setRuledOutEvidence] = useState([]);
   const [ghosts, setGhosts] = useState(getGhosts());
 
-  const updateRemainingEvidence = (currentEvidence, ruledOutEvidence) => {
+  useEffect(() => {
     setGhosts(identifyPossibleGhosts(currentEvidence, ruledOutEvidence));
-    setRemainingEvidence(
-      getRemainingEvidence(currentEvidence, ruledOutEvidence)
-    );
-  };
+    setRemainingEvidence(getRemainingEvidence(currentEvidence, ruledOutEvidence));
+  }, [currentEvidence, ruledOutEvidence]);
 
   const reset = () => {
     setCurrentEvidence([]);
@@ -38,21 +44,14 @@ function App() {
   };
 
   const toggleEvidence = (evidence) => {
-    var current = currentEvidence;
-    var ruledOut = ruledOutEvidence;
     if (currentEvidence.includes(evidence)) {
-      ruledOut = [...ruledOutEvidence, evidence];
-      current = currentEvidence.filter((it) => it !== evidence);
-      setRuledOutEvidence(ruledOut);
-      setCurrentEvidence(current);
+      setRuledOutEvidence([...ruledOutEvidence, evidence]);
+      setCurrentEvidence(currentEvidence.filter((it) => it !== evidence));
     } else if (ruledOutEvidence.includes(evidence)) {
-      ruledOut = ruledOutEvidence.filter((it) => it !== evidence);
-      setRuledOutEvidence(ruledOut);
+      setRuledOutEvidence(ruledOutEvidence.filter((it) => it !== evidence));
     } else {
-      current = [...currentEvidence, evidence];
-      setCurrentEvidence(current);
+      setCurrentEvidence([...currentEvidence, evidence]);
     }
-    updateRemainingEvidence(current, ruledOut);
   };
 
   return (
@@ -60,7 +59,7 @@ function App() {
       <h1>Phasmofinder</h1>
       <div id="entry">
         {evidence.map((evidence) => (
-          <Evidence
+          <EvidenceButton
             key={evidence}
             evidence={evidence}
             currentEvidence={currentEvidence}
