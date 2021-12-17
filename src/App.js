@@ -281,6 +281,12 @@ function getGhosts() {
       evidence: [EMFLevel5, Fingerprints, GhostOrb],
       traits: ["Can have a 6 finger fingerprint"],
     },
+    {
+      id: 21,
+      name: "Mimic",
+      evidence: [SpiritBox, Fingerprints, FreezingTemperatures, GhostOrb],
+      traits: ["It can copy the traits of other ghosts", "Ghost orbs accompany the ghost (does not count as evidence)"]
+    }
   ].sort((a, b) => a.name.localeCompare(b.name));
 }
 
