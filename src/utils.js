@@ -1,36 +1,15 @@
 export function containsAll(main, values) {
-    for (const value of values) {
-      if (!main.includes(value)) {
-        return false;
-      }
-    }
-    return true;
-  }
+  return main.every((value) => values.includes(value));
+}
 
-  export function containsNone(main, values) {
-    for (const value of values) {
-      if (main.includes(value)) {
-        return false;
-      }
-    }
-    return true;
-  }
+export function containsNone(main, values) {
+  return main.every((value) => !values.includes(value));
+}
 
-  export function distinct(items) {
-    const values = new Set()
-    for (const item of items) {
-      values.add(item);
-    }
+export function distinct(items) {
+  return [...new Set(items)];
+}
 
-    const list = [];
-
-    for (const item of values){
-      list.push(item);
-    }
-
-    return list;
-  }
-
-  export function removeAll(main, items) {
-    return main.filter((it) => !items.includes(it));
-  }
+export function removeAll(main, items) {
+  return main.filter((it) => !items.includes(it));
+}
