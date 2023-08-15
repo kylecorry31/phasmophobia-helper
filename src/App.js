@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import EvidenceButton from "./components/EvidenceButton";
-import { IconButton } from "@material-ui/core";
 import Ghost from "./components/Ghost";
 import { removeAll, distinct } from "./utils";
-import { Clear } from "@material-ui/icons";
 import {
   FreezingTemperatures,
   Fingerprints,
@@ -14,6 +12,8 @@ import {
   GhostOrb,
   DOTSProjector,
 } from "./evidence";
+import { Clear } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 function App() {
   const evidence = [

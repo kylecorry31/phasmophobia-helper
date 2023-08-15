@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import EvidenceIcon from "./EvidenceIcon";
 import { useMemo } from "react";
 
@@ -30,6 +30,7 @@ const EvidenceButton = ({
     <div>
       <Button
         variant="outlined"
+        color="inherit"
         startIcon={<EvidenceIcon evidence={evidence} />}
         className={`evidence-btn ${isSelected && "selected"} ${isRuledOut && "ruled-out"}`}
         onClick={toggleEvidence}
