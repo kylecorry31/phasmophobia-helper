@@ -1,5 +1,6 @@
 import { Button } from "@material-ui/core";
 import EvidenceIcon from "./EvidenceIcon";
+import { useMemo } from "react";
 
 const EvidenceButton = ({
   evidence,
@@ -8,24 +9,33 @@ const EvidenceButton = ({
   remainingEvidence,
   toggleEvidence,
 }) => {
+
+  const isSelected = useMemo(() => {
+    return currentEvidence.includes(evidence);
+  }, [currentEvidence, evidence]);
+
+  const isRuledOut = useMemo(() => {
+    return ruledOutEvidence.includes(evidence);
+  }, [ruledOutEvidence, evidence]);
+
+  const isDisabled = useMemo(() => {
+    return !(
+      remainingEvidence.includes(evidence) ||
+      currentEvidence.includes(evidence) ||
+      ruledOutEvidence.includes(evidence)
+    );
+  }, [remainingEvidence, currentEvidence, ruledOutEvidence, evidence]);
+
   return (
     <div>
       <Button
         variant="outlined"
-        startIcon={<EvidenceIcon evidence={evidence}/>}
-        className={`evidence-btn ${
-          currentEvidence.includes(evidence) && "selected"
-        } ${ruledOutEvidence.includes(evidence) && "ruled-out"}`}
+        startIcon={<EvidenceIcon evidence={evidence} />}
+        className={`evidence-btn ${isSelected && "selected"} ${isRuledOut && "ruled-out"}`}
         onClick={toggleEvidence}
-        disabled={
-          !(
-            remainingEvidence.includes(evidence) ||
-            currentEvidence.includes(evidence) ||
-            ruledOutEvidence.includes(evidence)
-          )
-        }
+        disabled={isDisabled}
       >
-       {evidence}
+        {evidence}
       </Button>
     </div>
   );

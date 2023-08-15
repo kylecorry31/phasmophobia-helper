@@ -3,7 +3,7 @@ export function containsAll(main, values) {
 }
 
 export function containsNone(main, values) {
-  return main.every((value) => !values.includes(value));
+  return values.length === 0 || main.every((value) => !values.includes(value));
 }
 
 export function distinct(items) {
