@@ -219,8 +219,18 @@ function getGhosts() {
     },
     {
       id: 21,
-      name: "Mimic",
+      name: "The Mimic",
       evidence: [SpiritBox, Fingerprints, FreezingTemperatures, GhostOrb]
+    },
+    {
+      id: 22,
+      name: "Deogen",
+      evidence: [SpiritBox, GhostWriting, DOTSProjector]
+    },
+    {
+      id: 23,
+      name: "Thaye",
+      evidence: [GhostOrb, GhostWriting, DOTSProjector]
     }
   ].sort((a, b) => a.name.localeCompare(b.name));
 }
