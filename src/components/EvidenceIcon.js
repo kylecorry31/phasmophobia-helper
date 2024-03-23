@@ -17,7 +17,7 @@ import {
   MdVideocam,
 } from "react-icons/md";
 
-const EvidenceIcon = ({ evidence, className }) => {
+export function EvidenceIcon({ evidence, className }) {
   switch (evidence) {
     case EMFLevel5:
       return (
@@ -56,6 +56,4 @@ const EvidenceIcon = ({ evidence, className }) => {
     default:
       return null;
   }
-};
-
-export default EvidenceIcon;
+}

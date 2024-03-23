@@ -1,11 +1,9 @@
 import "./Ghost.css";
-import EvidenceIcon from "./EvidenceIcon";
+import { EvidenceIcon } from "./EvidenceIcon";
 
-const Ghost = ({ ghost, currentEvidence }) => {
+export function Ghost({ ghost, currentEvidence }) {
   return (
-    <div
-      className="ghost"
-    >
+    <div className="ghost">
       <h4 className="ghost-name">{ghost.name}</h4>
       <div>
         <small>
@@ -20,6 +18,4 @@ const Ghost = ({ ghost, currentEvidence }) => {
       </div>
     </div>
   );
-};
-
-export default Ghost;
+}

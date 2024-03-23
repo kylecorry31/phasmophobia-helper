@@ -1,45 +1,25 @@
 import { Button } from "@mui/material";
-import EvidenceIcon from "./EvidenceIcon";
-import { useMemo } from "react";
+import { EvidenceIcon } from "./EvidenceIcon";
 
-const EvidenceButton = ({
+export function EvidenceButton({
   evidence,
-  currentEvidence,
-  ruledOutEvidence,
-  remainingEvidence,
-  toggleEvidence,
-}) => {
-
-  const isSelected = useMemo(() => {
-    return currentEvidence.includes(evidence);
-  }, [currentEvidence, evidence]);
-
-  const isRuledOut = useMemo(() => {
-    return ruledOutEvidence.includes(evidence);
-  }, [ruledOutEvidence, evidence]);
-
-  const isDisabled = useMemo(() => {
-    return !(
-      remainingEvidence.includes(evidence) ||
-      currentEvidence.includes(evidence) ||
-      ruledOutEvidence.includes(evidence)
-    );
-  }, [remainingEvidence, currentEvidence, ruledOutEvidence, evidence]);
-
+  selected,
+  ruledOut,
+  disabled,
+  onClick,
+}) {
   return (
-    <div>
-      <Button
-        variant="outlined"
-        color="inherit"
-        startIcon={<EvidenceIcon evidence={evidence} />}
-        className={`evidence-btn ${isSelected && "selected"} ${isRuledOut && "ruled-out"}`}
-        onClick={toggleEvidence}
-        disabled={isDisabled}
-      >
-        {evidence}
-      </Button>
-    </div>
+    <Button
+      variant="outlined"
+      color="inherit"
+      startIcon={<EvidenceIcon evidence={evidence} />}
+      className={`evidence-btn ${selected && "selected"} ${
+        ruledOut && "ruled-out"
+      }`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {evidence}
+    </Button>
   );
-};
-
-export default EvidenceButton;
+}
