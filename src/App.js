@@ -11,7 +11,7 @@ import {
   GhostOrb,
   DOTSProjector,
 } from "./evidence";
-import { Clear } from "@mui/icons-material";
+import { MdClear } from "react-icons/md";
 import { IconButton } from "@mui/material";
 
 const evidence = [
@@ -76,7 +76,7 @@ function App() {
           />
         ))}
         <IconButton onClick={reset} className="clear-btn">
-          <Clear />
+          <MdClear />
         </IconButton>
       </div>
       <div className="ghost-section">
